@@ -95,7 +95,12 @@ exports.handler = async function(event) {
     // add the section Object to the return value
     returnValue.sections.push(sectionObject)
 
-    // 
+    // ask Firebase the reviews with the ID provided by the section ID
+    let reviewQuery = await db.collection(`reviews`).where(`sectionId`, `==`, sectionId).get()
+    
+    // get the data from the query
+    let reviews = reviewQuery.docs
+    console.log(reviews)
   }
 
   // return the standard response
