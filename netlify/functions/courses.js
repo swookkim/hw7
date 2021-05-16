@@ -58,7 +58,9 @@ exports.handler = async function(event) {
   // create an object with the course data to hold the return value from our lambda
   let returnValue = {
     courseNumber: courseData.courseNumber,
-    name: courseData.name
+    name: courseData.name,
+    numReviews: 0,
+    avgRating: 0
   }
 
   // set a new Array as part of the return value
@@ -93,7 +95,7 @@ exports.handler = async function(event) {
     // add the section Object to the return value
     returnValue.sections.push(sectionObject)
 
-    // 🔥 your code for the reviews/ratings goes here
+    // 
   }
 
   // return the standard response
