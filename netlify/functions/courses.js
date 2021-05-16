@@ -139,7 +139,7 @@ exports.handler = async function(event) {
   } 
 
   // calculate the average rating for the course
-  returnValue.avgRating = returnValue.avgrating/returnValue.numReviews
+  returnValue.avgRating = returnValue.avgRating/returnValue.numReviews
 
   // return the standard response
   return {
