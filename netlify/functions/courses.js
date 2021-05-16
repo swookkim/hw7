@@ -134,7 +134,7 @@ exports.handler = async function(event) {
     }
   
     // calculate the average rating for the section 
-    sectionObject.avgRating = ectionObject.avgRating/(reviews.length)
+    sectionObject.avgRating = sectionObject.avgRating/(reviews.length)
 
   } 
 
