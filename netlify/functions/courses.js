@@ -130,7 +130,7 @@ exports.handler = async function(event) {
       returnValue.avgRating = returnValue.avgRating + reviewData.rating
 
       // add the review object to the return Value
-      returnValue.section.push(returnReview)
+      returnValue.sections.push(returnReview)
     }
   
     // calculate the average rating for the section 
