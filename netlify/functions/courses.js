@@ -100,8 +100,46 @@ exports.handler = async function(event) {
     
     // get the data from the query
     let reviews = reviewQuery.docs
-    console.log(reviews)
-  }
+
+    // create the variable to count the number of reviews and the average rating
+    sectionObject.numReviews = 0
+    sectionObject.avgRating = 0
+
+    // loop through the review documents
+    for (let j=0; j<reviews.length; j++){
+      
+      // get the data from the review
+      let reviewData = reviews[j].data()
+
+      // create the object with review data
+      let returnReview = {
+        reviewRating: reviewData.rating,
+        reviewComment: reviewData.body
+      }
+
+      // count the review in the section 
+      sectionObject.numReviews = sectionObject.numReviews + 1
+
+      // add the rating in the section
+      sectionObject.avgRating = sectionObject.avgRating + reviewData.rating
+
+      // count the review in the course
+      returnValue.numReviews = returnValue.numReviews + 1
+
+      // add the rating in the course
+      returnValue.avgRating = returnValue.avgRating + reviewData.rating
+
+      // add the review object to the return Value
+      returnValue.section.push(returnReview)
+    }
+  
+    // calculate the average rating for the section 
+    sectionObject.avgRating = ectionObject.avgRating/(reviews.length)
+
+  } 
+
+  // calculate the average rating for the course
+  returnValue.avgRating = returnValue.avgrating/returnValue.numReviews
 
   // return the standard response
   return {
